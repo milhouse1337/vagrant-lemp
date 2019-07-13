@@ -18,7 +18,7 @@ This script will automate the setup of a PHP developement box.
 
 ## Requirements
 
-- OSX (Windows and Linux might work but are not covered here)
+- MacOS (Windows and Linux might work but aren't covered here)
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 - [Vagrant](http://www.vagrantup.com/)
 
@@ -31,30 +31,32 @@ git clone https://github.com/milhouse1337/vagrant-lemp.git ~/Vagrant
 cd ~/Vagrant
 ```
 
-You need to remove the `.git` folder because this folder will become your dev root and there should be no `.git` folder a this level.
+You need to remove the `.git` folder, it will cause conflicts with your own Git repos later.
 
 ```bash
 rm -rf .git
 ```
 
-Open the following files and make sure they fit your desired configuration. For example the timezone, the MySQL root password and vhost might have to be changed.
+Open the following file:
 
 > ~/Vagrant/_install/bootstrap.sh
-> ~/Vagrant/_install/nginx-vhost.sh
 
-When everything seems fine you can start the installation:
+- Update the MySQL root password around lines 38 and 39.
+- Validate if the rest of the script feels right for you and update as needed.
+
+When everything seems fine you can lunch it. 🚀
 
 ```bash
 vagrant up
 ```
 
-Coffee time! ☕️ You will have to wait a few minutes for the script to complete. When everything is done you can restart the VM to make sure everything works as expected:
+You will have to wait a few minutes ☕️ for the script to complete.  When everything is done you can restart the VM to make sure everything works as expected:
 
 ```bash
 vagarant reload
 ```
 
-You now have a complete LEMP setup to play with. 🥳
+You now have a complete [LEMP](https://lemp.io/) setup to play with. 🤓
 
 ## Test your setup
 
@@ -69,14 +71,14 @@ Open to the following on your browser:
 
 [http://test.127.0.0.1.xip.io:8080](http://test.127.0.0.1.xip.io:8080)
 
-You should see a `phpinfo()` output. 🚀
+You should see a `phpinfo()` output. 👍
 
-> Note: If you want Vagrant to listen on port 80 you might have to forward the port 80 on port 8080 with `pf` (the built-in MacOS firewall). More information [here](https://stackoverflow.com/questions/17437137/vagrant-wont-forward-only-port-80).
+> Note: If you want Vagrant to listen on port 80 (or 443 for TLS) you might have to forward the ports with [pfctl](https://man.openbsd.org/pfctl) (the built-in MacOS firewall). More information [on this Stack Overflow](https://stackoverflow.com/questions/17437137/vagrant-wont-forward-only-port-80) if you want to know why and how to fix it.
 
 ### How does it work ? I didn't changed my hosts file or anything and it works. 🤔
 
 - The DNS part is handled by [xip.io](http://xip.io) which is a free service that is ment exactly for this purpose. It resolves any subdomain to the IP address you specify.
-- We use a wildcard for the default Nginx vhost so the document root is always `/var/www/{hostname}/public` for the VM and `~/Vagrant/{hostname}/public` on your local machine.
+- We use a wildcard for the default Nginx vhost so the document root is `/var/www/{$host}/public` for the VM and `~/Vagrant/{$host}/public` on your local machine.
 
 ## Vagrant cheat sheet
 
