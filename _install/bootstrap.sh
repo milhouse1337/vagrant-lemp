@@ -64,7 +64,9 @@ service nginx reload
 rm -rf /var/www/html
 
 # All done.
-echo "# *************************************************************************** #"
-echo "# Installation complete!                                                      #"
-echo "# Please reboot to make sure it works fine with: vagrant reload               #"
-echo "# *************************************************************************** #"
+echo ""
+echo "##############################################################################"
+echo "# Installation complete!                                                     #"
+echo "# Please reboot to make sure it works fine with: vagrant reload              #"
+echo "##############################################################################"
+echo ""
