@@ -41,7 +41,7 @@ Open the following file:
 
 > ~/Vagrant/_install/bootstrap.sh
 
-- Update the MySQL root password around lines 38 and 39.
+- Update the MySQL root password.
 - Validate if the rest of the script feels right for you and update as needed.
 
 When everything seems fine you launch it. 🚀
@@ -57,22 +57,23 @@ You will have to wait a few seconds (minutes) ☕️ for the script to complete.
 Create the following folders and PHP file: 
 
 ```bash
-mkdir -p ~/Vagrant/test.127.0.0.1.xip.io/public
-echo "<?php phpinfo(); ?>" > ~/Vagrant/test.127.0.0.1.xip.io/public/index.php
+mkdir -p ~/Vagrant/127.0.0.1/public
+echo "<?php phpinfo(); ?>" > ~/Vagrant/127.0.0.1/public/index.php
 ```
 
 Open the link on your browser:
 
-> [http://test.127.0.0.1.xip.io:8080](http://test.127.0.0.1.xip.io:8080)
+> [http://127.0.0.1:8080](http://127.0.0.1:8080)
 
 You should see a `phpinfo()` output. 👍
 
 > Note: If you want Vagrant to listen on port 80 (or 443 for TLS) you might have to forward the ports with [pfctl](https://man.openbsd.org/pfctl) (the built-in MacOS firewall). More information [on this Stack Overflow](https://stackoverflow.com/questions/17437137/vagrant-wont-forward-only-port-80) if you want to know why and how to fix it.
 
-### How does it work ? I didn't changed my hosts file or anything and it works. 🤔
+## How does it work? 🤔
 
-- The DNS part is handled by [xip.io](http://xip.io) which is a free service that is ment exactly for this purpose. It resolves any subdomain to the IP address you specify.
-- We use a wildcard for the default Nginx vhost so the document root is `/var/www/{$host}/public` for the VM and `~/Vagrant/{$host}/public` on your local machine.
+We use the `$host` variable from Nginx on the default vhost so the document root is `/var/www/{$host}/public` for the VM and `~/Vagrant/{$host}/public` on your local machine. This emulates the same behavior as `VirtualDocumentRoot` from Apache but for Nginx.
+
+This means you can use ANY hostname you want (make sure it resolves to `127.0.0.1`) then you create the above folder structure (`~/Vagrant/{$hostname}/public`) to make it work, pretty cool! 😎
 
 ## Vagrant cheat sheet
 

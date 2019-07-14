@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Configuration.
+export MYSQL_ROOT_PASSWORD=change_me
 export DEBIAN_FRONTEND=noninteractive
 
 # Locale.
@@ -28,19 +30,19 @@ apt-get autoremove -y
 # Install base packages.
 apt-get install -y build-essential checkinstall software-properties-common
 
-# Install tools.
-apt-get install -y whois curl screen supervisor subversion git-core ack-grep htop vim
+# Install dev tools.
+apt-get install -y whois curl screen subversion git-core ack-grep htop vim
 
 # Install Nginx.
 apt-get install -y nginx
 
 # Install PHP.
 add-apt-repository -y ppa:ondrej/php
-apt-get install -y php7.2 php7.2-fpm php7.2-curl php7.2-gd php7.2-intl php7.2-mbstring php7.2-sqlite3 php7.2-soap php7.2-xml php7.2-zip
+apt-get install -y php7.2 php7.2-fpm php7.2-curl php7.2-gd php7.2-intl php7.2-mbstring php7.2-sqlite3 php7.2-xml php7.2-zip
 
 # Install MariaDB (MySQL).
-debconf-set-selections <<< 'mysql-server mysql-server/root_password password change_me'
-debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password change_me'
+debconf-set-selections <<< "mysql-server mysql-server/root_password password $MYSQL_ROOT_PASSWORD"
+debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASSWORD"
 apt-get install -y mariadb-server php7.2-mysql
 
 # Install Memcached.
