@@ -24,7 +24,7 @@ This script will automate the setup of a PHP developement box.
 
 ## Install
 
-You can clone the following Git repo in a folder called `Vagrant` in your home directory. 
+You clone this repo in a folder called `Vagrant` in your home directory. 
 
 ```bash
 git clone https://github.com/milhouse1337/vagrant-lemp.git ~/Vagrant
