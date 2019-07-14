@@ -44,19 +44,13 @@ Open the following file:
 - Update the MySQL root password around lines 38 and 39.
 - Validate if the rest of the script feels right for you and update as needed.
 
-When everything seems fine you can lunch it. 🚀
+When everything seems fine you launch it. 🚀
 
 ```bash
 vagrant up
 ```
 
-You will have to wait a few minutes ☕️ for the script to complete.  When everything is done you can restart the VM to make sure everything works as expected:
-
-```bash
-vagarant reload
-```
-
-You now have a complete [LEMP](https://lemp.io/) setup to play with. 🤓
+You will have to wait a few seconds (minutes) ☕️ for the script to complete. When everything is done you have a complete [LEMP](https://lemp.io/) setup to play with. 🤓
 
 ## Test your setup
 
@@ -67,9 +61,9 @@ mkdir -p ~/Vagrant/test.127.0.0.1.xip.io/public
 echo "<?php phpinfo(); ?>" > ~/Vagrant/test.127.0.0.1.xip.io/public/index.php
 ```
 
-Open to the following on your browser:
+Open the link on your browser:
 
-[http://test.127.0.0.1.xip.io:8080](http://test.127.0.0.1.xip.io:8080)
+> [http://test.127.0.0.1.xip.io:8080](http://test.127.0.0.1.xip.io:8080)
 
 You should see a `phpinfo()` output. 👍
 
@@ -83,11 +77,11 @@ You should see a `phpinfo()` output. 👍
 ## Vagrant cheat sheet
 
 ```bash
-vagrant up # Boot the VM. (install if not already provisioned)
-vagrant ssh # Login on the VM as user "vagrant".
-vagrant reload # Reboot the VM.
-vagrant halt # Poweroff the VM.
-vagrant destroy # Delete the VM.
+vagrant up # Boot. (install if not already provisioned)
+vagrant ssh # Login as user "vagrant".
+vagrant reload # Reboot.
+vagrant halt # Poweroff.
+vagrant destroy # Delete.
 ```
 
 ## License
