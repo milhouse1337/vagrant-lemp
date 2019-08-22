@@ -1,7 +1,7 @@
 # Vagrant LEMP stack
 
 [![Tested on Vagrant 2.2.x](https://img.shields.io/badge/Vagrant-2.2.x-0E7EFF.svg)](https://www.vagrantup.com/)
-[![Tested on VirtualBox 6.0.x](https://img.shields.io/badge/VirtualBox-6.0.x-183861.svg)](https://www.vagrantup.com/)
+[![Tested on VirtualBox 6.0.x](https://img.shields.io/badge/VirtualBox-6.0.x-183861.svg)](https://www.virtualbox.org/)
 [![Version 2.0](https://img.shields.io/badge/Version-2.0-success.svg)](#)
 
 This script will automate the setup of a PHP developement box.

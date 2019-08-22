@@ -28,7 +28,7 @@ apt-get dist-upgrade -y
 apt-get autoremove -y
 
 # Install base packages.
-apt-get install -y build-essential checkinstall software-properties-common
+apt-get install -y build-essential software-properties-common
 
 # Install dev tools.
 apt-get install -y whois curl screen subversion git-core ack-grep htop vim
@@ -69,6 +69,5 @@ rm -rf /var/www/html
 echo ""
 echo "##############################################################################"
 echo "# Installation complete!                                                     #"
-echo "# Please reboot to make sure it works fine with: vagrant reload              #"
 echo "##############################################################################"
 echo ""
